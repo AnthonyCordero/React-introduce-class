@@ -7,16 +7,16 @@ import FormButton from '../FormButton'
 
 const Formulario = () => {
 
-    const sendData = (event) => {
-        event.preventDefault()
-        console.log('Enviado', event)
+    const sendData = (e) => {
+        e.preventDefault()
+        console.log('Enviado', e)
     }
     return <section className='addForm'>
         <form onSubmit={sendData}>
             <h2>Rellena el formulario para crear el colaborador.</h2>
-            <FormInput title='Nombre' placeholder='Ingresa el nombre' />
-            <FormInput title='Puesto' placeholder='Agrega el puesto' />
-            <FormInput title='Foto' placeholder='Coloca el link de la fotografía' />
+            <FormInput title='Nombre' placeholder='Ingresa el nombre' required />
+            <FormInput title='Puesto' placeholder='Agrega el puesto' required />
+            <FormInput title='Foto' placeholder='Coloca el link de la fotografía' required />
             <TeamOption />
             <FormButton>
                 Agregar colaborador
