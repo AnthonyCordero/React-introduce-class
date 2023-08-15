@@ -1,0 +1,15 @@
+.teamSection {
+    width: 100%;
+    padding: 32px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.teamSection h3 {
+    color: #212121;
+    font-family: Prata, serif;
+    font-size: 32px;
+    font-weight: 400;
+    border-bottom: 4px solid;
+    display: inline-block;
+}
