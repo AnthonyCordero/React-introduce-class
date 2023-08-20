@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './FormInput.css'
+
 const FormInput = (props) => {
     const [value, setValue] = useState('');
     const placeholderMod = `${props.placeholder}...`;

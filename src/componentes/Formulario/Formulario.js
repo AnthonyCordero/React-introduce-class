@@ -6,7 +6,7 @@ import FormButton from '../FormButton'
 
 
 
-const Formulario = () => {
+const Formulario = (props) => {
     const [name, setName] = useState('')
     const [position, setPosition] = useState('')
     const [photo, setPhoto] = useState('')
@@ -45,7 +45,8 @@ const Formulario = () => {
                 setValue={setPhoto} />
             <TeamOption
                 value={team}
-                setTeam={setTeam} />
+                setTeam={setTeam}
+                teams={props.team} />
             <FormButton>
                 Agregar colaborador
             </FormButton>

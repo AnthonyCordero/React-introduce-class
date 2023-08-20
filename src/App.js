@@ -60,7 +60,7 @@ function App() {
       <Header />
       {/* {showHideForm === true ? <Formulario /> : <div></div>} */}
       {/* {showHideForm ? <Formulario /> : <></>} */}
-      {showHideForm && <Formulario />}
+      {showHideForm && <Formulario team={teamsInfo.map((team) => team.title)} />}
       <MiOrg switchShowHide={switchShowHide} />
       {
         teamsInfo.map((defTeam) => <Team teamData={defTeam} key={defTeam.title} />)
