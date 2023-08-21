@@ -12,6 +12,9 @@ const Formulario = (props) => {
     const [photo, setPhoto] = useState('')
     const [team, setTeam] = useState('')
 
+    const { coworkerRegistration } = props;
+
+
     const sendData = (e) => {
         e.preventDefault()
         let sendData = {
@@ -19,9 +22,9 @@ const Formulario = (props) => {
             position,
             photo,
             team
-        }
-        console.log(sendData)
-    }
+        };
+        coworkerRegistration(sendData);
+    };
     return <section className='addForm'>
         <form onSubmit={sendData}>
             <h2>Rellena el formulario para crear el colaborador.</h2>
