@@ -15,7 +15,7 @@ const Formulario = (props) => {
     const [title, updateTitle] = useState('')
     const [color, updateColor] = useState('')
 
-    const { coworkerRegistration, createTeam } = props;
+    const { coworkerRegistration, createTeam, like } = props;
 
 
     const sendData = (e) => {
@@ -66,12 +66,13 @@ const Formulario = (props) => {
         <form onSubmit={sendNewTeamData}>
             <h2>Rellena el formulario para crear el equipo.</h2>
             <FormInput
-                title='title'
+                title='Equipo'
                 placeholder='Ingresa el titulo'
                 required
                 value={title}
                 setValue={updateTitle} />
             <FormInput
+                type="color"
                 title='Color'
                 placeholder='Agrega el color en Hex'
                 required
