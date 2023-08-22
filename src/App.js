@@ -8,7 +8,7 @@ import Team from './componentes/Team';
 import Footer from './componentes/Footer';
 
 function App() {
-  const [showHideForm, setShowHideForm] = useState(true);
+  const [showHideForm, setShowHideForm] = useState(false);
 
   const [coworkers, updateCoworwers] = useState([
     {
@@ -16,49 +16,56 @@ function App() {
       name: "Anthony Cordero",
       position: "Programador",
       photo: "https://github.com/AnthonyCordero.png",
-      team: "Front End"
+      team: "Front End",
+      fav: true
     },
     {
       id: uuid(),
       name: "Genesys Rondón",
       position: "Desarrolladora de software e instructora",
       photo: "https://scontent.fsyq1-1.fna.fbcdn.net/v/t39.30808-6/369161947_6347246988716822_473931346132967735_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6qcwtDBjk2IAX_e7gsW&_nc_ht=scontent.fsyq1-1.fna&oh=00_AfDgdql2OL-tvcU0WHN9Dxp7cvpWxdz0IMzTcgs5IBFNnw&oe=64E8CA1F",
-      team: "Front End"
+      team: "Front End",
+      fav: false
     },
     {
       id: uuid(),
       name: "Jeanmarie Quijada",
       position: "Instructora en Alura Latam",
       photo: "https://github.com/JeanmarieAluraLatam.png",
-      team: "Front End"
+      team: "Front End",
+      fav: false
     },
     {
       id: uuid(),
       name: "Jose Gonzalez",
       position: "Dev. FullStack",
       photo: "https://github.com/JoseDarioGonzalezCha.png",
-      team: "Data Science"
+      team: "Data Science",
+      fav: false
     },
     {
       id: uuid(),
       name: "Harland Lohora",
       position: "Intructor",
       photo: "https://github.com/harlandlohora.png",
-      team: "Front End"
+      team: "Front End",
+      fav: false
     },
     {
       id: uuid(),
       name: "Jeanmarie Quijada",
       position: "Instructora en Alura Latam",
       photo: "https://github.com/AnthonyCordero.png",
-      team: "Innovación y Gestión"
+      team: "Innovación y Gestión",
+      fav: false
     },
     {
       id: uuid(),
       name: "Christian Velasco",
       position: "Head de Alura e instructor",
       photo: "https://github.com/christianpva.png",
-      team: "Móvil"
+      team: "Móvil",
+      fav: false
     },
 
   ]);
@@ -116,7 +123,6 @@ function App() {
   //CoworkerRegistration
 
   const coworkerRegistration = (coworker) => {
-    console.log('Nuevo Colaborador', coworker);
     //SpreadOperator
     updateCoworwers([...coworkers, coworker]);
   }
@@ -124,7 +130,6 @@ function App() {
   // Eliminar Colaborador
 
   const deleteCoworker = (id) => {
-    console.log('Eliminar', id);
     const newCoworkers = coworkers.filter((coworker) => coworker.id !== id);
     updateCoworwers(newCoworkers);
   }
@@ -132,7 +137,6 @@ function App() {
   // Actualizad Color de Equipo
 
   const updateColor = (color, id) => {
-    console.log('Acualizar: ', color, id);
     const updatedTeamsColor = teamsInfo.map((team) => {
       if (team.id === id) {
         team.primaryColor = color;
@@ -146,10 +150,22 @@ function App() {
   // Crear equipo
 
   const createTeam = (newTeam) => {
-    console.log(newTeam)
     updateTeamsInfo([...teamsInfo, { ...newTeam, id: uuid() }])
   }
+  // Like
+  const like = (id) => {
+    const updatedCoworkers = coworkers.map((coworker) => {
+      if (coworker.id === id) {
+        return {
+          ...coworker,
+          fav: !coworker.fav
+        };
+      }
+      return coworker;
+    });
 
+    updateCoworwers(updatedCoworkers);
+  }
 
   return (
     <div>
@@ -173,6 +189,7 @@ function App() {
           coworkers={coworkers.filter(coworker => coworker.team === defTeam.title)}
           deleteCoworker={deleteCoworker}
           updateColor={updateColor}
+          like={like}
         />
         )
       }

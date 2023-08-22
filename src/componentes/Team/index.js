@@ -6,7 +6,7 @@ import hexToRgba from 'hex-to-rgba';
 const Team = (props) => {
     //Destructuracion
     const { title, primaryColor, secondaryColor, id } = props.teamData
-    const { coworkers, deleteCoworker, updateColor } = props
+    const { coworkers, deleteCoworker, updateColor, like } = props
     const teamSectionBG = { backgroundColor: hexToRgba(primaryColor, 0.3) }
     const underLineColor = { borderColor: primaryColor }
 
@@ -27,6 +27,7 @@ const Team = (props) => {
                         key={index}
                         primaryColor={primaryColor}
                         deleteCoworker={deleteCoworker}
+                        like={like}
                     />)
                     }
                 </div>
