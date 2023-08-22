@@ -12,7 +12,10 @@ const Formulario = (props) => {
     const [photo, setPhoto] = useState('')
     const [team, setTeam] = useState('')
 
-    const { coworkerRegistration } = props;
+    const [title, updateTitle] = useState('')
+    const [color, updateColor] = useState('')
+
+    const { coworkerRegistration, createTeam } = props;
 
 
     const sendData = (e) => {
@@ -25,6 +28,11 @@ const Formulario = (props) => {
         };
         coworkerRegistration(sendData);
     };
+
+    const sendNewTeamData = (e) => {
+        e.preventDefault();
+        createTeam({ title, primaryColor: color });
+    }
     return <section className='addForm'>
         <form onSubmit={sendData}>
             <h2>Rellena el formulario para crear el colaborador.</h2>
@@ -52,6 +60,25 @@ const Formulario = (props) => {
                 teams={props.team} />
             <FormButton>
                 Agregar colaborador
+            </FormButton>
+        </form>
+
+        <form onSubmit={sendNewTeamData}>
+            <h2>Rellena el formulario para crear el equipo.</h2>
+            <FormInput
+                title='title'
+                placeholder='Ingresa el titulo'
+                required
+                value={title}
+                setValue={updateTitle} />
+            <FormInput
+                title='Color'
+                placeholder='Agrega el color en Hex'
+                required
+                value={color}
+                setValue={updateColor} />
+            <FormButton>
+                Agregar equipo
             </FormButton>
         </form>
     </section>

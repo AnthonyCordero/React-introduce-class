@@ -5,7 +5,7 @@ import hexToRgba from 'hex-to-rgba';
 
 const Team = (props) => {
     //Destructuracion
-    const { title, primaryColor, secondaryColor } = props.teamData
+    const { title, primaryColor, secondaryColor, id } = props.teamData
     const { coworkers, deleteCoworker, updateColor } = props
     const teamSectionBG = { backgroundColor: hexToRgba(primaryColor, 0.3) }
     const underLineColor = { borderColor: primaryColor }
@@ -18,7 +18,7 @@ const Team = (props) => {
                     type='color'
                     className='input-color'
                     value={primaryColor}
-                    onChange={(e) => { updateColor(e.target.value, title) }}
+                    onChange={(e) => { updateColor(e.target.value, id) }}
                 />
                 <h3 style={underLineColor}>{title}</h3>
                 <div className="colleagues">
